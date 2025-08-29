@@ -1,6 +1,9 @@
 # 1675MHz
-1675MHz Study with NOAA
+1675MHz Study with NOAA 
 
+https://www.ntia.gov/report/2024/spectrum-pipeline-reallocation-engineering-study-follow-task-3-identifying-regulatory-constraints
+
+[Updated Analysis with CBRS Neighborhood Methodology]
 
 First, check to see if ITM/Matlab is setup correctly.
 
