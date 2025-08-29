@@ -9,7 +9,7 @@ Run: https://github.com/nicklasorte/itm_matlab_example
 
 Then download the files from this repository.
 
-Run the matlab file:
+Run the matlab file: https://github.com/nicklasorte/1675MHz_SPRES/blob/main/init_sim_folder_and_run_1675MHz_neighborhood2025_rev1.m
 
 
 
