@@ -3,7 +3,7 @@
 
 https://www.ntia.gov/report/2024/spectrum-pipeline-reallocation-engineering-study-follow-task-3-identifying-regulatory-constraints
 
-[Updated Analysis with CBRS Neighborhood Methodology]
+[Updated Analysis with 2025 Randomized Real Deployment and CBRS Neighborhood Methodology]
 
 First, check to see if ITM/Matlab is setup correctly.
 
