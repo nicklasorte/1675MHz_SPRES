@@ -21,7 +21,7 @@ pause(0.1)
 %%1675Mhz
 %%%%%%%%%%%%%
 
-load(strcat('cell_sim_data_rev_1675MHz_5.mat'),'cell_sim_data')
+load(strcat('cell_sim_data_rev_1675MHz_6.mat'),'cell_sim_data')
 cell_sim_data(1:2,:)'
 
 
@@ -47,38 +47,12 @@ max(norm_aas_zero_elevation_data(:,[2:4])) %%%%%This should be [0 0 0]
 load('rand_real_2025.mat','rand_real_2025')  %%%%%%%%1)Lat, 2)Lon, 3)Antenna Height
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Test
-% rev=100; %%%%%Test with New Code
-% freq_separation=0; %%%%%%%Assuming co-channel
-% bs_eirp=65%%%% %%%%%EIRP [dBm/1MHz] 
-% mitigation_dB=0%%:10:30;  %%%%%%%%% in dB%%%%% Beam Muting or PRB Blanking (or any other mitigation mechanism):  30 dB reduction %%%%%%%%%%%%Consider have this be an array, 3dB step size, to get a more granular insight into how each 3dB mitigation reduces the coordination zone.
-% mc_size=10;%%%% Since we're at 50%
-% tf_full_binary_search=1;  %%%%%Search all DPA Points, not just the max distance point
-% min_binaray_spacing=8%1%2;%4%8; %%%%%%%minimum search distance (km)
-% %%%%%%%%reliability=50%
-% reliability=[1,2,3,4,5,6,7,8,9,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,91,92,93,94,95,96,97,98,99]'; %%%A custom ITM range to interpolate from
-% move_list_reliability=reliability;
-% agg_check_reliability=reliability;
-% FreqMHz=1675;  %%%%%%%%%%MHz
-% confidence=50;
-% mc_percentile=95
-% sim_radius_km=512; %%%%%%%%Placeholder distance         binary_dist_array=[2,4,8,16,32,64,128,256,512,1024,2048];
-% base_station_latlonheight=rand_real_2025;  %%1)Lat, 2)Lon, 3)Height meters
-% base_station_latlonheight(:,3)=30; %%%%%%Used 30m for SPRES
-% tf_clutter=0;%1%;  %%%%%%%????, Just do this in the EIRP reductions
-% sim_folder1='C:\Local Matlab Data\1675_Neighborhood_2025' 
-% sim_idx=find(contains(cell_sim_data(:,1),'wallops_DCS'))
-% cell_sim_data=cell_sim_data([1,sim_idx],:)
-% tf_opt=1; %%%%This is for the optimized move list, (not WinnForum)
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Test
-rev=101; %%%%%Test with New Code
+rev=103; %%%%%Test with New Code: Wallops --> 446km[?] --> 450km
 freq_separation=0; %%%%%%%Assuming co-channel
 bs_eirp=65%%%% %%%%%EIRP [dBm/1MHz] 
 mitigation_dB=0%%:10:30;  %%%%%%%%% in dB%%%%% Beam Muting or PRB Blanking (or any other mitigation mechanism):  30 dB reduction %%%%%%%%%%%%Consider have this be an array, 3dB step size, to get a more granular insight into how each 3dB mitigation reduces the coordination zone.
-mc_size=1000;%%%% Since we're at 50%
+mc_size=1000;%%%% 
 tf_full_binary_search=1;  %%%%%Search all DPA Points, not just the max distance point
 min_binaray_spacing=1%2;%4%8; %%%%%%%minimum search distance (km)
 %%%%%%%%reliability=50%
@@ -91,14 +65,12 @@ mc_percentile=95
 sim_radius_km=512; %%%%%%%%Placeholder distance         binary_dist_array=[2,4,8,16,32,64,128,256,512,1024,2048];
 base_station_latlonheight=rand_real_2025;  %%1)Lat, 2)Lon, 3)Height meters
 base_station_latlonheight(:,3)=30; %%%%%%Used 30m for SPRES
-tf_clutter=0;%1%;  %%%%%%%????, Just do this in the EIRP reductions
+tf_clutter=0;%1%;  %%%%%%% P2018 Clutter for <6m heights
 sim_folder1='C:\Local Matlab Data\1675_Neighborhood_2025' 
 sim_idx=find(contains(cell_sim_data(:,1),'wallops_DCS'))
 cell_sim_data=cell_sim_data([1,sim_idx],:)
 tf_opt=1; %%%%This is for the optimized move list, (not WinnForum)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -119,7 +91,7 @@ maine_exception=1;  %%%%%%Just leave this to 1
 Tpol=1; %%%polarization for ITM
 deployment_percentage=100; %%%%%%%%%%%Let's not change this.
 margin=1;%%dB margin for aggregate interference
-building_loss=15;  %%%%Not applicable for outdoor base stations
+building_loss=15;  %%%%Not applicable for outdoor base stations, but still just have it as a placeholder
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Saving the simulation files in a folder for the option to run from a server
 'First save . . .' %%%%%24 seconds on Z drive
 tic;
